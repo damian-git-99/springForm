@@ -23,14 +23,14 @@
             <div class="col-12">
                 <h3 class=" text-success text-center" th:text="${titulo}"></h3>
                 <ul class="list-group">
-                    <li th:if="${username.equals('')}" class="list-group-item list-group-item-danger" th:text=" 'Nombre: No introdujo ningun Nombre'"></li>
-                    <li th:if="${!username.equals('')}" class="list-group-item list-group-item-success" th:text=" 'Nombre: ' + ${username}"></li>
+                    <li th:if="${user.username.equals('')}" class="list-group-item list-group-item-danger" th:text=" 'Nombre: No introdujo ningun Nombre'"></li>
+                    <li th:if="${!user.username.equals('')}" class="list-group-item list-group-item-success" th:text=" 'Nombre: ' + ${user.username}"></li>
 
-                    <li th:if="${password.equals('')}" class="list-group-item list-group-item-danger" th:text=" 'Password: ' + ${password}"></li>
-                    <li th:if="${!password.equals('')}" class="list-group-item list-group-item-success" th:text=" 'Password: ' + ${password}"></li>
+                    <li th:if="${user.password.equals('')}" class="list-group-item list-group-item-danger" th:text=" 'Password: ' + ${user.password}"></li>
+                    <li th:if="${!user.password.equals('')}" class="list-group-item list-group-item-success" th:text=" 'Password: ' + ${user.password}"></li>
 
-                    <li th:if="${email.equals('')}" class="list-group-item list-group-item-danger" th:text=" 'Email: ' + ${email}">Morbi leo risus</li>
-                    <li th:if="${!email.equals('')}" class="list-group-item list-group-item-success" th:text=" 'Email: ' + ${email}">Morbi leo risus</li>
+                    <li th:if="${user.email.equals('')}" class="list-group-item list-group-item-danger" th:text=" 'Email: ' + ${user.email}">Morbi leo risus</li>
+                    <li th:if="${!user.email.equals('')}" class="list-group-item list-group-item-success" th:text=" 'Email: ' + ${user.email}">Morbi leo risus</li>
                 </ul>
             </div>
         </div>

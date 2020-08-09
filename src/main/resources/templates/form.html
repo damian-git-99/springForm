@@ -13,13 +13,17 @@
 </head>
 
 <body>
-
-    <div class="container mt-2">
-        <div class="row justify-content-center">
+	<div class="container mt-2">
+    	<div th:if="${error!=null}" class="alert alert-danger" role="alert">
+	    	<p th:if="${error.get('email')!=null}" th:text="${error.get('email')}"></p>
+	    	<p th:if="${error.get('username')!=null}" th:text="${error.get('username')}"></p>
+		  	<p th:if="${error.get('password')!=null}" th:text="${error.get('password')}"></p>
+		</div>
+        <div class="row justify-content-center mt-2">
             <div class="col-10">
                 <form th:action="@{/form}" method="post">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
