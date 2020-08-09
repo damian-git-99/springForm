@@ -19,6 +19,10 @@ public class FormController {
 
 	@GetMapping("/form")
 	public String form(Model model) {
+		Usuario usuario = new Usuario();
+		//Como el usuario no tiene definidos los datos
+		//Spring lo toma como una cadena vacia
+		model.addAttribute("user", usuario);
 		model.addAttribute("titulo", "Form");
 		return "form";
 	}
@@ -39,6 +43,7 @@ public class FormController {
 						.concat(err.getDefaultMessage()));
 			});
 			model.addAttribute("error", errores);
+			model.addAttribute("user", user);
 			return "form";
 		}
 		
