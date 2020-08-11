@@ -14,28 +14,43 @@
 
 <body>
 	<div class="container mt-2">
-    	<div th:if="${error!=null}" class="alert alert-danger" role="alert">
-	    	<p th:if="${error.get('email')!=null}" th:text="${error.get('email')}"></p>
-	    	<p th:if="${error.get('username')!=null}" th:text="${error.get('username')}"></p>
-		  	<p th:if="${error.get('password')!=null}" th:text="${error.get('password')}"></p>
-		</div>
+    	
         <div class="row justify-content-center mt-2">
             <div class="col-10">
-                <form th:action="@{/form}" method="post">
-                    <div class="form-group">
-                        <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:value="${user.email}">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <input type="text"  name="username" class="form-control" id="nombre" placeholder="Nombre" th:value="${user.username}">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                <form th:action="@{/form}" th:object="${usuario}" method="post">
+                
+                	<div class="form-group">
+                        <input type="text"   class="form-control" id="nombre" placeholder="Nombre" th:field="*{username}">  <!--  *{username} video 54     -->
+                        <div  th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert alert-danger mt-1" role="alert"></div>
                     </div>
                     
+             		<div class="form-group">
+                        <input type="text"   class="form-control" id="apellido" placeholder="Apellido" th:field="*{apellido}">  <!--  *{username} video 54  th:field agrega automaticamente el name y el value   -->
+                        <div  th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+                    
+			    	<div class="form-group">
+                        <input type="text"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}"> 
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <div  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password"  class="form-control" id="password" placeholder="Password" th:field="*{password}">
+                        <div  th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger mt-1"  role="alert"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text"  class="form-control" id="expresion" placeholder="expresion" th:field="*{expresion}">
+                        <div  th:if="${#fields.hasErrors('expresion')}" th:errors="*{expresion}" class="alert alert-danger mt-1"  role="alert"></div>
+                    </div>
+                    
+                   
                     <button type="submit" class="btn btn-primary">Submit</button>
                     
+                    
                 </form>
+                
             </div>
         </div>
     </div>
