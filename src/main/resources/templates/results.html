@@ -18,8 +18,9 @@
 
 <body>
 
-    <div class="container mt-2">
-        <div class="row align-content-center">
+    <div class="container mt-2 mb-3" >
+    	<a th:href="@{/form}" class="btn btn-success">Volver</a>
+        <div class="row">
             <div class="col-12">
                 <h3 class=" text-success text-center" th:text="${titulo}"></h3>
                 <ul class="list-group">
@@ -28,8 +29,15 @@
                     <li class="list-group-item list-group-item-success" th:text=" 'Password: ' + ${usuario.password}"></li>
 					<li class="list-group-item list-group-item-success" th:text=" 'Email: ' + ${usuario.email}"></li>
 					<li class="list-group-item list-group-item-success" th:text=" 'ID: ' + ${usuario.id}"></li>
-					<li class="list-group-item list-group-item-success" th:text=" 'ID: ' + ${usuario.expresion}"></li>
+					<li class="list-group-item list-group-item-success" th:text=" 'Expresion: ' + ${usuario.expresion}"></li>
+					<li class="list-group-item list-group-item-success" th:text=" 'Edad: ' + ${usuario.edad}"></li>
+					<li class="list-group-item list-group-item-success" th:text=" 'Fecha: ' + ${#dates.format(usuario.fechaNacimiento,'dd/MM/yyyy')}"></li>
+					<li class="list-group-item list-group-item-success" th:text=" 'Pais: ' + ${usuario.pais.id}"></li>
+					<li class="list-group-item list-group-item-success" th:text=" 'Habilitar: ' + ${usuario.habilitar}"></li>
+					<li class="list-group-item list-group-item-success" th:text=" 'Genero: ' + ${usuario.genero}"></li>
                 </ul>
+                	
+                
             </div>
         </div>
 

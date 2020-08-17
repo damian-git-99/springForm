@@ -20,7 +20,7 @@ public class UsuarioValidador implements Validator {
 		Usuario usuario = (Usuario) target;
 		
 		// Cualquiera de las dos opciones esta bien
-		ValidationUtils.rejectIfEmpty(errors, "apellido", "NotEmpty.usuario.apellido");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellido", "NotEmpty.usuario.apellido");
 		
 		/*
 		if (usuario.getApellido().isEmpty()) {

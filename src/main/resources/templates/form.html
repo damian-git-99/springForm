@@ -13,44 +13,83 @@
 </head>
 
 <body>
-	<div class="container mt-2">
-    	
+    <div class="container mt-2 mb-2">
+        <h1 class="text-center">Formulario (Spring y Bootstrap)</h1>
         <div class="row justify-content-center mt-2">
             <div class="col-10">
                 <form th:action="@{/form}" th:object="${usuario}" method="post">
-                
-                	<div class="form-group">
-                        <input type="text"   class="form-control" id="nombre" placeholder="Nombre" th:field="*{username}">  <!--  *{username} video 54     -->
-                        <div  th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert alert-danger mt-1" role="alert"></div>
+					
+					
+					<div class="form-group">
+					<h3>Habilitar</h3>
+                        <input type="checkbox"  id="habilitar"  th:field="*{habilitar}">
+                        <!--  *{username} video 54     -->
+                     </div>
+                     
+                      <div class="form-group">
+                      <h3>Género</h3>
+                        <input type="radio"  id="genero1"  th:field="*{genero}" value="Hombre">
+                        <label for="genero1">Hombre</label>
+                       	 <input type="radio"  id="genero2"  th:field="*{genero}" value="Mujer">
+                       	  <label for="genero2">Mujer</label>
+                        <div th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" class="alert alert-danger mt-1" role="alert"></div>
                     </div>
-                    
-             		<div class="form-group">
-                        <input type="text"   class="form-control" id="apellido" placeholder="Apellido" th:field="*{apellido}">  <!--  *{username} video 54  th:field agrega automaticamente el name y el value   -->
-                        <div  th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="alert alert-danger mt-1" role="alert"></div>
-                    </div>
-                    
-			    	<div class="form-group">
-                        <input type="text"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}"> 
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                        <div  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger mt-1" role="alert"></div>
-                    </div>
-                    
+                     
+
                     <div class="form-group">
-                        <input type="password"  class="form-control" id="password" placeholder="Password" th:field="*{password}">
-                        <div  th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger mt-1"  role="alert"></div>
+                        <select class="custom-select" id="pais.id" th:field="*{pais.id}">
+							<option value="">Seleccionar Pais (MAP)</option>	
+							<option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
+						</select>
+                        <!--  *{username} video 54     -->
+                        <div th:if="${#fields.hasErrors('pais.id')}" th:errors="*{pais.id}" class="alert alert-danger mt-1" role="alert"></div>
                     </div>
                     
+
+                  <div class="form-group">
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" th:field="*{username}">
+                        <!--  *{username} video 54     -->
+                        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+
                     <div class="form-group">
-                        <input type="text"  class="form-control" id="expresion" placeholder="expresion" th:field="*{expresion}">
-                        <div  th:if="${#fields.hasErrors('expresion')}" th:errors="*{expresion}" class="alert alert-danger mt-1"  role="alert"></div>
+                        <input type="text" class="form-control" id="apellido" placeholder="Apellido" th:field="*{apellido}">
+                        <!--  *{username} video 54  th:field agrega automaticamente el name y el value   -->
+                        <div th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" class="alert alert-danger mt-1" role="alert"></div>
                     </div>
-                    
-                   
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}"> <small id="emailHelp" class="form-text text-muted">We'll never share your email
+							with anyone else.</small>
+                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password" th:field="*{password}">
+                        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="expresion" placeholder="expresion" th:field="*{expresion}">
+                        <div th:if="${#fields.hasErrors('expresion')}" th:errors="*{expresion}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="edad" placeholder="edad" th:field="*{edad}">
+                        <div th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" class="form-control" id="fechaNacimiento" placeholder="fecha de Nacimiento" th:field="*{fechaNacimiento}">
+                        <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}" class="alert alert-danger mt-1" role="alert"></div>
+                    </div>
+
+
                     <button type="submit" class="btn btn-primary">Submit</button>
-                    
-                    
+
+
                 </form>
-                
+
             </div>
         </div>
     </div>
